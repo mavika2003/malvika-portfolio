@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Malvika Sawant - Portfolio Website
+
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- 🎨 Beautiful, modern UI with smooth animations
+- 📱 Fully responsive design
+- ⚡ Built with Next.js 16 for optimal performance
+- 🎭 Framer Motion animations
+- 🎯 TypeScript for type safety
+- 💅 Tailwind CSS for styling
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+ and npm
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+### Deploy to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push your code to GitHub
+2. Go to [Vercel](https://vercel.com)
+3. Import your repository
+4. Vercel will automatically detect Next.js and deploy your site
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Alternatively, use the Vercel CLI:
 
-## Deploy on Vercel
+```bash
+npm install -g vercel
+vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+portfolio/
+├── app/
+│   ├── layout.tsx      # Root layout
+│   ├── page.tsx        # Main portfolio page
+│   └── globals.css     # Global styles
+├── public/
+│   └── images/         # Image assets
+├── package.json
+└── README.md
+```
+
+## Technologies Used
+
+- **Next.js 16** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
+- **Lucide React** - Icons
+- **React Intersection Observer** - Scroll animations
+
+## License
+
+MIT License - feel free to use this template for your own portfolio!
+
+## Contact
+
+- Email: mvs2153@columbia.edu
+- LinkedIn: [linkedin.com/in/malvikasawant](https://linkedin.com/in/malvikasawant)
+- GitHub: [github.com/mavika2003](https://github.com/mavika2003)
