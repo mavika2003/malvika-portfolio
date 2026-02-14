@@ -189,7 +189,7 @@ export default function Home() {
                   {/* Image container */}
                   <div className="relative bg-white rounded-3xl p-3 shadow-xl border border-slate-200">
                     <Image
-                      src="/images/hero-image.png"
+                      src="/images/columbia.png"
                       alt="Malvika Sawant"
                       width={600}
                       height={800}
