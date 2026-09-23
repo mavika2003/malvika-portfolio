@@ -2,49 +2,74 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { linkedInGallery } from "@/lib/gallery-data";
+import { moments } from "@/lib/gallery-data";
 
-// Varying heights create a playful masonry rhythm instead of a uniform grid
-const heightPattern = ["md:h-[420px]", "md:h-[280px]", "md:h-[320px]", "md:h-[380px]", "md:h-[260px]", "md:h-[340px]"];
+const tilts = ["-rotate-2", "rotate-1", "rotate-2", "-rotate-1"];
 
 export default function Gallery() {
   return (
-    <section id="moments" className="py-28 md:py-36 relative bg-ink text-cream">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="moments" className="py-24 md:py-32 dot-grid">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 max-w-xl"
+          className="max-w-2xl"
         >
-          <span className="font-mono-tag text-sm text-clay uppercase tracking-widest">06 — Moments</span>
-          <h2 className="font-display font-black text-4xl md:text-6xl mt-4">
-            Life outside the IDE
+          <span className="font-mono-tag text-xs text-clay uppercase tracking-[0.2em]">03 · Moments</span>
+          <h2 className="font-display font-black text-4xl md:text-6xl text-ink mt-4 leading-[1.05]">
+            Life outside the <span className="italic text-clay">IDE</span>
           </h2>
+          <p className="mt-5 text-lg text-ink/60">
+            A few snapshots from competitions, conferences, and the offices in between.
+          </p>
         </motion.div>
 
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 space-y-5">
-          {linkedInGallery.map((item, i) => (
-            <motion.div
-              key={item.src}
+        <div className="mt-16 columns-1 sm:columns-2 lg:columns-3 gap-8">
+          {moments.map((moment, i) => (
+            <motion.figure
+              key={moment.src}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: (i % 3) * 0.1 }}
-              className={`group relative overflow-hidden rounded-3xl break-inside-avoid h-64 ${heightPattern[i % heightPattern.length]}`}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="break-inside-avoid mb-10"
             >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover object-center group-hover:scale-110 transition-transform duration-700"
-                sizes="(max-width: 768px) 100vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                <h3 className="font-display font-bold text-xl">{item.title}</h3>
-                <p className="text-sm text-cream/80 mt-1">{item.description}</p>
+              <div
+                className={`polaroid ${tilts[i % tilts.length]} hover:rotate-0 transition-transform duration-500`}
+              >
+                {moment.height > moment.width ? (
+                  // tall phone shots would dominate the wall, so crop them to 4:5
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[3px]">
+                    <Image
+                      src={moment.src}
+                      alt={moment.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-[center_45%]"
+                    />
+                  </div>
+                ) : (
+                  <Image
+                    src={moment.src}
+                    alt={moment.alt}
+                    width={moment.width}
+                    height={moment.height}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="w-full h-auto rounded-[3px]"
+                  />
+                )}
+                <figcaption className="px-2 pt-4 pb-1">
+                  <span className="font-mono-tag text-[11px] uppercase tracking-wider text-clay">
+                    {moment.tag}
+                  </span>
+                  <h3 className="font-display font-bold text-xl text-ink mt-1.5 leading-snug">
+                    {moment.title}
+                  </h3>
+                  <p className="text-sm text-ink/65 mt-2 leading-relaxed">{moment.story}</p>
+                </figcaption>
               </div>
-            </motion.div>
+            </motion.figure>
           ))}
         </div>
       </div>

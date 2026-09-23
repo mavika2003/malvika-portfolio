@@ -1,70 +1,81 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Brain, Shield, Code2, Terminal, Cloud, Atom, type LucideIcon } from "lucide-react";
 
-const categories = [
+const categories: { name: string; icon: LucideIcon; items: string[] }[] = [
   {
     name: "AI & ML",
-    items: ["LLMs", "Generative AI", "RAG", "LangGraph", "LangChain", "Microsoft AutoGen", "Prompt Engineering", "scikit-learn", "spaCy"],
+    icon: Brain,
+    items: ["LLMs", "RAG", "LangGraph", "LangChain", "AutoGen", "Langfuse", "scikit-learn", "spaCy"],
   },
   {
     name: "Security",
-    items: ["Datadog", "Okta", "CVE / Threat Intel", "JWT Sessions", "Auth & AuthZ", "ML Security"],
+    icon: Shield,
+    items: ["Datadog", "Okta", "Threat intel", "Auth & AuthZ", "JWT", "ML security"],
   },
   {
-    name: "Dev & Design",
-    items: ["Next.js", "Node.js", "REST APIs", "Unity", "Playwright", "Selenium"],
+    name: "Building",
+    icon: Code2,
+    items: ["Next.js", "Node.js", "REST APIs", "Unity", "Playwright", "n8n"],
   },
   {
     name: "Languages",
+    icon: Terminal,
     items: ["Python", "TypeScript", "Java", "C++", "C#", "C"],
   },
   {
-    name: "Data & Cloud",
+    name: "Data & cloud",
+    icon: Cloud,
     items: ["MySQL", "MongoDB", "Supabase", "Docker", "Kubernetes", "AWS", "GCP"],
+  },
+  {
+    name: "Currently curious about",
+    icon: Atom,
+    items: ["Quantum computing", "Responsible AI", "NLP"],
   },
 ];
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-28 md:py-36 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-24 md:py-32 bg-paper/60">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 max-w-xl"
+          className="max-w-2xl"
         >
-          <span className="font-mono-tag text-sm text-clay uppercase tracking-widest">05 — Toolbox</span>
-          <h2 className="font-display font-black text-4xl md:text-6xl text-ink mt-4">
+          <span className="font-mono-tag text-xs text-clay uppercase tracking-[0.2em]">05 · Toolbox</span>
+          <h2 className="font-display font-black text-4xl md:text-6xl text-ink mt-4 leading-[1.05]">
             What I reach for
           </h2>
         </motion.div>
 
-        <div className="space-y-10">
-          {categories.map((cat, ci) => (
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {categories.map((cat, i) => (
             <motion.div
               key={cat.name}
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: ci * 0.06 }}
-              className="grid md:grid-cols-[180px_1fr] gap-4 md:gap-8 items-start border-t border-ink/10 pt-6"
+              transition={{ delay: i * 0.06 }}
+              className="card-soft rounded-[2rem] p-7"
             >
-              <div className="font-display font-bold text-lg text-clay">{cat.name}</div>
-              <div className="flex flex-wrap gap-3">
-                {cat.items.map((skill, i) => (
-                  <motion.span
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl bg-clay/10 flex items-center justify-center">
+                  <cat.icon className="w-5 h-5 text-clay" />
+                </div>
+                <h3 className="font-display font-bold text-lg text-ink">{cat.name}</h3>
+              </div>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {cat.items.map((skill) => (
+                  <span
                     key={skill}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: ci * 0.06 + i * 0.03 }}
-                    whileHover={{ scale: 1.06, rotate: -1 }}
-                    className="px-4 py-2 bg-white border border-ink/10 rounded-full text-ink/80 text-sm font-medium cursor-default hover:border-clay hover:text-clay transition-colors"
+                    className="px-3 py-1.5 rounded-full bg-cream border border-ink/10 text-sm text-ink/80 hover:border-clay hover:text-clay transition-colors cursor-default"
                   >
                     {skill}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </motion.div>

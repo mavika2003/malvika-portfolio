@@ -2,82 +2,114 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, Download, MapPin, Trophy } from "lucide-react";
+
+const chips = [
+  { label: "LangGraph", position: "top-10 -left-10", delay: "float-soft" },
+  { label: "Python", position: "top-1/3 -right-10", delay: "float-soft-delay" },
+  { label: "AutoGen", position: "bottom-28 -left-14", delay: "float-soft-delay" },
+  { label: "Next.js", position: "bottom-10 -right-6", delay: "float-soft" },
+];
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[100dvh] flex items-center pt-28 pb-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-[1.3fr_1fr] gap-12 lg:gap-8 items-center">
-        {/* Left: headline with inline photo */}
+    <section className="relative min-h-[100dvh] flex items-center pt-28 pb-20 overflow-hidden dot-grid">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 w-full grid lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="font-mono-tag text-sm text-clay uppercase tracking-widest">
-            Hey, I'm Malvika ✦ based between NYC & Dubai
-          </span>
+          <div className="inline-flex items-center gap-2 rounded-full bg-white border border-ink/10 px-4 py-2 text-sm text-ink/70 shadow-sm">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
+            </span>
+            Open to AI engineering & research roles
+          </div>
 
-          <h1 className="font-display font-black leading-[0.95] tracking-tight text-ink mt-6 text-[13vw] lg:text-[5.2vw]">
-            I build{" "}
-            <span className="inline-chip w-[0.85em] h-[0.85em] relative -translate-y-1">
-              <Image
-                src="/images/linkedin/deriv-presenting-1.jpg"
-                alt="Malvika presenting"
-                fill
-                className="object-cover"
-              />
-            </span>{" "}
-            agentic
+          <p className="mt-8 font-display italic text-2xl md:text-3xl text-clay">Hi, I&apos;m</p>
+          <h1 className="font-display font-black tracking-tight text-ink leading-[0.95] text-6xl sm:text-7xl xl:text-8xl">
+            Malvika
             <br />
-            AI systems that
-            <br />
-            <span className="text-clay italic">actually ship.</span>
+            Sawant<span className="text-clay">.</span>
           </h1>
 
-          <p className="mt-8 text-lg md:text-xl text-ink/70 max-w-xl leading-relaxed">
-            MS in Computer Science at <span className="text-ink font-semibold">Columbia</span>, previously
-            building LLM & security platforms at <span className="text-ink font-semibold">Deriv</span> handling
-            100K+ requests a day. I like turning messy problems into calm, working systems.
+          <p className="mt-7 text-xl md:text-2xl text-ink/80 max-w-xl leading-snug">
+            I build <span className="squiggle font-semibold text-ink">agentic AI systems</span> — and
+            make sure they behave once they meet the real world.
+          </p>
+          <p className="mt-4 text-base md:text-lg text-ink/60 max-w-lg leading-relaxed">
+            Grad student at Columbia, ex-AI engineer at Deriv, occasional CTF winner. Mostly I like
+            turning messy problems into calm, working systems.
           </p>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
-              href="#contact"
-              className="btn-tactile group inline-flex items-center gap-2 px-7 py-4 bg-ink text-cream font-semibold rounded-full hover:bg-clay transition-colors"
+              href="#journey"
+              className="btn-tactile group inline-flex items-center gap-2 px-7 py-4 bg-ink text-cream font-semibold rounded-full hover:bg-clay"
             >
-              Let's build something
-              <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              See my journey
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <span className="font-mono-tag text-sm text-ink/50">
-              currently @ Columbia Research Lab
+            <a
+              href="/resume.pdf"
+              download
+              className="btn-tactile inline-flex items-center gap-2 px-7 py-4 bg-white border border-ink/15 text-ink font-semibold rounded-full hover:border-clay hover:text-clay"
+            >
+              <Download className="w-4 h-4" />
+              Resume
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink/55">
+            <span className="inline-flex items-center gap-1.5">
+              <MapPin className="w-4 h-4 text-clay" /> New York · Dubai
             </span>
+            <span className="font-mono-tag text-xs">MS CS @ Columbia &apos;27</span>
           </div>
         </motion.div>
 
-        {/* Right: portrait, tilted card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, rotate: 3 }}
-          animate={{ opacity: 1, scale: 1, rotate: -2 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative justify-self-center lg:justify-self-end"
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="relative mx-auto w-[280px] sm:w-[340px] lg:w-[380px]"
         >
-          <div className="relative w-64 sm:w-80 lg:w-full max-w-sm aspect-[4/5] rounded-[2.5rem] overflow-hidden border-[6px] border-white shadow-2xl">
+          <div
+            className="absolute -inset-8 rounded-full border-2 border-dashed border-clay/30 animate-[spin_40s_linear_infinite]"
+            aria-hidden="true"
+          />
+          <div className="absolute -inset-2 rounded-t-full rounded-b-[3rem] bg-clay-100" aria-hidden="true" />
+
+          <div className="relative aspect-[4/5] rounded-t-full rounded-b-[3rem] overflow-hidden border-[6px] border-white shadow-2xl">
             <Image
-              src="/images/linkedin/columbia-university.png"
-              alt="Malvika at Columbia University"
+              src="/images/linkedin/devfest-dubai.png"
+              alt="Malvika Sawant"
               fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 60vw, 30vw"
               priority
+              sizes="(max-width: 1024px) 340px, 380px"
+              className="object-cover object-[center_30%]"
             />
           </div>
-          <motion.div
-            className="absolute -bottom-5 -left-5 bg-white rounded-2xl px-4 py-3 shadow-xl border border-ink/5 float-soft"
-          >
-            <div className="font-display font-bold text-ink text-sm">3rd place</div>
-            <div className="text-xs text-ink/60">Dubai Police AI CTF</div>
-          </motion.div>
+
+          {chips.map((chip) => (
+            <div
+              key={chip.label}
+              className={`hidden sm:flex absolute ${chip.position} ${chip.delay} items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-ink shadow-lg border border-ink/5`}
+            >
+              <span className="w-2 h-2 rounded-full bg-clay" />
+              {chip.label}
+            </div>
+          ))}
+
+          <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 rotate-[-4deg] flex items-center gap-3 rounded-2xl bg-ink text-cream px-5 py-3 shadow-xl whitespace-nowrap">
+            <Trophy className="w-5 h-5 text-clay-400" />
+            <div>
+              <div className="font-display font-bold text-sm">3rd place</div>
+              <div className="text-xs text-cream/70">Dubai Police AI CTF</div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

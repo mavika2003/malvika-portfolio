@@ -5,9 +5,10 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { href: "#work", label: "Work" },
-  { href: "#projects", label: "Projects" },
+  { href: "#about", label: "About" },
+  { href: "#journey", label: "Journey" },
   { href: "#moments", label: "Moments" },
+  { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
 ];
 
@@ -80,7 +81,7 @@ export default function Navigation() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-cream/98 backdrop-blur-xl border-t border-ink/10"
+            className="md:hidden bg-cream/95 backdrop-blur-xl border-t border-ink/10"
           >
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (

@@ -32,37 +32,37 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <section className="py-28 md:py-36 relative bg-paper">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="wins" className="py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 max-w-xl"
+          className="max-w-3xl"
         >
-          <span className="font-mono-tag text-sm text-clay uppercase tracking-widest">04 — Wins</span>
-          <h2 className="font-display font-black text-4xl md:text-6xl text-ink mt-4">
-            A few highlights
+          <span className="font-mono-tag text-xs text-clay uppercase tracking-[0.2em]">06 · Wins</span>
+          <h2 className="font-display font-black text-4xl md:text-6xl text-ink mt-4 leading-[1.05]">
+            Things I&apos;m <span className="italic text-clay">proud</span> of
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="mt-14 grid md:grid-cols-2 gap-5">
           {achievements.map((item, i) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 24, rotate: i % 2 === 0 ? -1 : 1 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="card-soft rounded-3xl p-8 flex gap-5"
+              className="card-soft rounded-[2rem] p-7 md:p-8 flex gap-5"
             >
               <div className="w-12 h-12 rounded-2xl bg-clay/10 flex items-center justify-center shrink-0">
                 <item.icon className="w-6 h-6 text-clay" />
               </div>
               <div>
                 <h3 className="font-display font-bold text-xl text-ink leading-snug">{item.title}</h3>
-                <div className="font-mono-tag text-xs text-clay mt-1">{item.org}</div>
-                <p className="text-ink/60 mt-2 leading-relaxed">{item.detail}</p>
+                <div className="font-mono-tag text-xs text-clay mt-1.5">{item.org}</div>
+                <p className="text-ink/60 mt-3 leading-relaxed">{item.detail}</p>
               </div>
             </motion.div>
           ))}
